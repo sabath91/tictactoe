@@ -17,6 +17,7 @@ class Round {
 
     Player play() {
         while (isMovePossible) {
+            board.printBoard();
             makeMove();
             checkIfWinningMove();
         }
@@ -33,7 +34,7 @@ class Round {
     }
 
     private void checkIfWinningMove() {
-        isMovePossible = roundReferee.isWinningMove(moveManager.getLastMove());
+        isMovePossible = !roundReferee.isWinningMove(moveManager.getLastMove());
     }
 
     private void makeMove() {

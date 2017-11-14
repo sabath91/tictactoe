@@ -10,5 +10,11 @@ class Field {
         return sign.getSingOrNumber(index+1);
     }
 
+    boolean isEmpty(){
+        return sign.equals(Sign.E);
+    }
 
+    void set(Sign sign) {
+        this.sign = sign;
+    }
 }

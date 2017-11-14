@@ -1,10 +1,13 @@
 class MoveValidator {
+
+    Board board;
+
     MoveValidator(Board board) {
 
+        this.board = board;
     }
 
     boolean validate(int move) {
-        //TODO
-        return false;
+        return board.isFieldEmpty(move);
     }
 }

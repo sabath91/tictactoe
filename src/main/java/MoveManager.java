@@ -1,3 +1,5 @@
+import java.util.Scanner;
+
 class MoveManager {
 
 
@@ -21,18 +23,16 @@ class MoveManager {
     void handleMove() {
 
 
-        //zrób tak żeby dostać input
+        Scanner scanner = new Scanner(System.in);
+        System.out.println(currentPlayer.getName().toUpperCase() + " - Gdzie chcesz postawić znak?:\n");
+        int move = scanner.nextInt();
 
-        //mam input - Move
-        int move = 0; //TODO
         if (moveValidator.validate(move)) {
-            //Napisz, że super:)
-            //zminen board
             board.mark(move, currentPlayer.getSign());
             lastMove = move;
             changePlayer();
         } else {
-            //JEszcze raz
+            //Jeszcze raz
             handleMove();
         }
     }

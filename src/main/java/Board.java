@@ -12,6 +12,7 @@ class Board {
     Board(int xSize, List<Field> gameBoard) {
         this.xSize = xSize;
         this.gameBoard = gameBoard;
+        load = 0;
     }
 
     public static Board initializeGameBoard(int xSize, int ySize){
@@ -27,10 +28,10 @@ class Board {
         return Collections.unmodifiableList(gameBoard);
     }
 
-    void printBoard(){
+    public void printBoard(){
         StringBuilder board = new StringBuilder();
         for(int i=0; i<gameBoard.size(); i++){
-            board.append(gameBoard.get(i).getSingOrNumber(i));
+            board.append(gameBoard.get(i).getSingOrNumber(i)).append("\t");
             if((i+1)%xSize==0){
                 board.append('\n');
             }
@@ -42,7 +43,17 @@ class Board {
         return load < gameBoard.size();
     }
 
-    public void mark(int move, Sign sign) {
-        //TODO
+    void mark(int move, Sign sign) {
+        gameBoard.get(move-1).set(sign);
+        load++;
+    }
+
+    public boolean isFieldEmpty(int move) {
+        try {
+            return gameBoard.get(move-1).isEmpty();
+        }catch (IndexOutOfBoundsException e){
+            return false;
+        }
+
     }
 }
