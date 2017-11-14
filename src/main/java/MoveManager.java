@@ -32,7 +32,8 @@ class MoveManager {
             lastMove = move;
             changePlayer();
         } else {
-            //Jeszcze raz
+            //retry
+            System.out.println(currentPlayer.getName().toUpperCase() + " - NIEWŁAŚCIWY RUCH\n Spróbój jeszcze raz! Gdzie chcesz postawić znak?:\n");
             handleMove();
         }
     }
