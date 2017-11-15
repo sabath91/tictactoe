@@ -17,7 +17,7 @@ class Board {
         load = 0;
     }
 
-    public static Board initializeGameBoard(int xSize, int ySize) {
+    static Board initializeGameBoard(int xSize, int ySize) {
         int boardSize = xSize * ySize;
         List<Field> gameBoard = new ArrayList<>(boardSize);
         for (int i = 0; i < boardSize; i++) {
@@ -30,7 +30,7 @@ class Board {
         return Collections.unmodifiableList(gameBoard);
     }
 
-    public void printBoard() {
+    void printBoard() {
         StringBuilder board = new StringBuilder();
         for (int i = 0; i < gameBoard.size(); i++) {
             board.append(gameBoard.get(i).getSingOrNumber(i)).append("\t");
