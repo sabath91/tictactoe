@@ -17,4 +17,8 @@ class Field {
     void set(Sign sign) {
         this.sign = sign;
     }
+
+    String getSign(){
+      return sign.getSign();
+    }
 }

@@ -26,7 +26,7 @@ public class Game {
         Round round = new Round(player1, player2, xSize, ySize);
         //   |-> then create board
         //   |-> then logic to round (moves, filing board, etc.
-        round.play();
+        System.out.println("wygrywa: " + round.play().getName());
     }
 
 

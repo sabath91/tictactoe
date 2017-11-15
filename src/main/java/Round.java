@@ -11,7 +11,7 @@ class Round {
         this.player2 = player2;
         board = Board.initializeGameBoard(xSize, ySize);
         moveManager = new MoveManager(board, player1, player2);
-        roundReferee = new RoundReferee();
+        roundReferee = new RoundReferee(3, board);
     }
 
 
@@ -26,6 +26,7 @@ class Round {
 
     private Player getWinner() {
         if(roundReferee.isWinningMove(moveManager.getLastMove())){
+            System.out.println("Wygrywa: ");
             return moveManager.lastPlayer();
         }else {
             //draw

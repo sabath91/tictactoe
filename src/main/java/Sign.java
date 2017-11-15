@@ -1,5 +1,5 @@
 public enum Sign {
-    X("X"),O("0"),
+    X("X"),O("O"),
 
 
     E("-") {
@@ -17,5 +17,7 @@ public enum Sign {
     public String getSingOrNumber(int index){
         return enumMember;
     }
-
+    public String getSign(){
+        return this.enumMember;
+    }
 }
