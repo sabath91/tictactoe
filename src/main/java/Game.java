@@ -17,12 +17,12 @@ public class Game {
 
         System.out.println("Please provide board dimensions");
         System.out.print("x: ");
-//        int xSize = scanner.nextInt();
-        int xSize = 3;
-//        System.out.print("y: ");
-//        int ySize = scanner.nextInt();
-        int ySize = 4;
-
+        int xSize = scanner.nextInt();
+//        int xSize = 3;
+        System.out.print("y: ");
+        int ySize = scanner.nextInt();
+//        int ySize = 4;
+        System.out.println();
         Round round = new Round(player1, player2, xSize, ySize);
         //   |-> then create board
         //   |-> then logic to round (moves, filing board, etc.

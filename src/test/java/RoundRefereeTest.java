@@ -32,13 +32,13 @@ public class RoundRefereeTest {
         assertTrue(result);
     }
 
-    public void shouldWin() {
+    public void shouldNotWinNoSequence() {
         //given
         testBoard = new ArrayList<>(Arrays.asList(
                 new Field(Sign.X), new Field(Sign.E), new Field(Sign.E),
-                new Field(Sign.O), new Field(Sign.X), new Field(Sign.E),
-                new Field(Sign.E), new Field(Sign.E), new Field(Sign.E),
-                new Field(Sign.E), new Field(Sign.E), new Field(Sign.E)
+                new Field(Sign.O), new Field(Sign.X), new Field(Sign.X),
+                new Field(Sign.E), new Field(Sign.O), new Field(Sign.E),
+                new Field(Sign.E), new Field(Sign.E), new Field(Sign.X)
         ));
         roundReferee = new RoundReferee(winningArea, new Board(xSize, 4, testBoard));
 
@@ -46,7 +46,7 @@ public class RoundRefereeTest {
         boolean result = roundReferee.isWinningMove(5, Sign.X);
 
         //then
-        assertTrue(result);
+        assertFalse(result);
     }
 
     public void shouldWinWhenInColumn() {
@@ -128,4 +128,22 @@ public class RoundRefereeTest {
         //then
         assertFalse(result);
     }
+
+    public void nextTest() {
+        //given
+        testBoard = new ArrayList<>(Arrays.asList(
+                new Field(Sign.E), new Field(Sign.X), new Field(Sign.E), new Field(Sign.E),
+                new Field(Sign.E), new Field(Sign.E), new Field(Sign.O), new Field(Sign.E),
+                new Field(Sign.E), new Field(Sign.E), new Field(Sign.E), new Field(Sign.E),
+                new Field(Sign.E), new Field(Sign.E), new Field(Sign.E), new Field(Sign.E)
+        ));
+        roundReferee = new RoundReferee(winningArea, new Board(4, 4, testBoard));
+
+        //when
+        boolean result = roundReferee.isWinningMove(7, Sign.O);
+
+        //then
+        assertFalse(result);
+    }
+
 }

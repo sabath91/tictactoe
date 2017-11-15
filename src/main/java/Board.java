@@ -73,14 +73,14 @@ class Board {
         int initColumnNumber = (lastMove - 1) % xSize;
         int difference = Math.abs(Math.min(initColumnNumber, initRowNumber) - 0);
         int rowNumber = initRowNumber - difference;
-        int columnNumber = initColumnNumber - difference;
+        int columnNumber = initColumnNumber + difference;
         int resultSize = Math.min(xSize, ySize);
 
         ArrayList<Field> result = new ArrayList<>();
         result.add(gameBoard.get(rowNumber + columnNumber));
        try {
            for (int i = 1; i < resultSize; i++) {
-               result.add(gameBoard.get(rowNumber + columnNumber + i * (xSize + 1)));
+               result.add(gameBoard.get(rowNumber + columnNumber + i * (xSize - 1)));
            }
        }catch (IndexOutOfBoundsException e){
            //
@@ -93,13 +93,17 @@ class Board {
         int initColumnNumber = (lastMove - 1) % xSize;
         int difference = Math.abs(Math.min(initColumnNumber, initRowNumber) - 0);
         int rowNumber = initRowNumber - difference;
-        int columnNumber = initColumnNumber + difference;
+        int columnNumber = initColumnNumber - difference;
         int resultSize = Math.min(xSize, ySize);
 
         ArrayList<Field> result = new ArrayList<>(resultSize);
         result.add(gameBoard.get(rowNumber + columnNumber));
-        for (int i = 1; i < resultSize; i++) {
-            result.add(gameBoard.get(rowNumber + columnNumber + xSize - 1));
+        try {
+            for (int i = 1; i < resultSize; i++) {
+                result.add(gameBoard.get(rowNumber + columnNumber + i *(xSize + 1)));
+            }
+        }catch (IndexOutOfBoundsException e){
+            //
         }
         return result;
     }
