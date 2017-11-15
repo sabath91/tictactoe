@@ -5,22 +5,23 @@ class Round {
     private final MoveManager moveManager;
     private final RoundReferee roundReferee;
     private boolean isMovePossible = true;
-
-    Round(Player player1, Player player2, int xSize, int ySize) {
+    private boolean isBoardNotFull = true;
+    Round(Player player1, Player player2, int xSize, int ySize, int winningArea) {
         this.player1 = player1;
         this.player2 = player2;
         board = Board.initializeGameBoard(xSize, ySize);
         moveManager = new MoveManager(board, player1, player2);
-        roundReferee = new RoundReferee(3, board);
+        roundReferee = new RoundReferee(winningArea, board);
     }
 
 
     Player play() {
-        while (isMovePossible) {
+        while (isMovePossible && isBoardNotFull) {
             board.printBoard();
             makeMove();
             checkIfWinningMove();
         }
+        board.printBoard();
         return getWinner();
     }
 
@@ -39,7 +40,7 @@ class Round {
 
     private void makeMove() {
         moveManager.handleMove();
-        isMovePossible = board.isNotFull();
+        isBoardNotFull = board.isNotFull();
     }
 
 }

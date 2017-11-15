@@ -84,6 +84,7 @@ class Board {
            }
        }catch (IndexOutOfBoundsException e){
            //
+           result.add(new Field(Sign.E));
        }
         return result;
     }
@@ -104,6 +105,7 @@ class Board {
             }
         }catch (IndexOutOfBoundsException e){
             //
+            result.add(new Field(Sign.E));
         }
         return result;
     }
