@@ -26,7 +26,7 @@ public class RoundRefereeTest {
         roundReferee = new RoundReferee(winningArea, new Board(xSize, ySize, testBoard));
 
         //when
-        boolean result = roundReferee.isWinningMove(2);
+        boolean result = roundReferee.isWinningMove(2, Sign.X);
 
         //then
         assertTrue(result);
@@ -43,7 +43,7 @@ public class RoundRefereeTest {
         roundReferee = new RoundReferee(winningArea, new Board(xSize, 4, testBoard));
 
         //when
-        boolean result = roundReferee.isWinningMove(5);
+        boolean result = roundReferee.isWinningMove(5, Sign.X);
 
         //then
         assertTrue(result);
@@ -59,7 +59,7 @@ public class RoundRefereeTest {
         roundReferee = new RoundReferee(winningArea, new Board(xSize, ySize, testBoard));
 
         //when
-        boolean result = roundReferee.isWinningMove(4);
+        boolean result = roundReferee.isWinningMove(4, Sign.X);
 
         //then
         assertTrue(result);
@@ -75,7 +75,7 @@ public class RoundRefereeTest {
         roundReferee = new RoundReferee(winningArea, new Board(xSize, ySize, testBoard));
 
         //when
-        boolean result = roundReferee.isWinningMove(3);
+        boolean result = roundReferee.isWinningMove(3, Sign.X);
 
         //then
         assertTrue(result);
@@ -91,7 +91,7 @@ public class RoundRefereeTest {
         roundReferee = new RoundReferee(winningArea, new Board(xSize, ySize, testBoard));
 
         //when
-        boolean result = roundReferee.isWinningMove(9);
+        boolean result = roundReferee.isWinningMove(9, Sign.X);
 
         //then
         assertTrue(result);
@@ -107,7 +107,7 @@ public class RoundRefereeTest {
         roundReferee = new RoundReferee(winningArea, new Board(xSize, ySize, testBoard));
 
         //when
-        boolean result = roundReferee.isWinningMove(2);
+        boolean result = roundReferee.isWinningMove(2, Sign.X);
 
         //then
         assertFalse(result);
@@ -123,7 +123,7 @@ public class RoundRefereeTest {
         roundReferee = new RoundReferee(winningArea, new Board(xSize, ySize, testBoard));
 
         //when
-        boolean result = roundReferee.isWinningMove(2);
+        boolean result = roundReferee.isWinningMove(2, Sign.X);
 
         //then
         assertFalse(result);

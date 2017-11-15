@@ -25,9 +25,8 @@ class Round {
     }
 
     private Player getWinner() {
-        if(roundReferee.isWinningMove(moveManager.getLastMove())){
-            System.out.println("Wygrywa: ");
-            return moveManager.lastPlayer();
+        if(roundReferee.isWinningMove(moveManager.getLastMove(), moveManager.getLastPlayer().getSign())){
+            return moveManager.getLastPlayer();
         }else {
             //draw
             return null;
@@ -35,7 +34,7 @@ class Round {
     }
 
     private void checkIfWinningMove() {
-        isMovePossible = !roundReferee.isWinningMove(moveManager.getLastMove());
+        isMovePossible = !roundReferee.isWinningMove(moveManager.getLastMove(), moveManager.getLastPlayer().getSign());
     }
 
     private void makeMove() {

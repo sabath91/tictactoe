@@ -4,18 +4,17 @@ class RoundReferee {
 
     //TODO or Setting winingArea = Settings.getWinningArea;
     int winningArea;
-    //todo
-    Sign sign = Sign.X;
+    Sign sign;
     private Board board;
     int lastMove;
-    //todo
 
     public RoundReferee(int winningArea, Board board) {
         this.winningArea = winningArea;
         this.board = board;
     }
 
-    public boolean isWinningMove(int move) {
+    public boolean isWinningMove(int move, Sign sign) {
+        this.sign = sign;
         lastMove=move;
         return winOnRow() || winOnColumn() || winOnRightDiagonal() || winOnLeftDiagonal();
     }

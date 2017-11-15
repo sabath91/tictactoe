@@ -49,7 +49,7 @@ class MoveManager {
         currentPlayer = nextPlayer;
     }
 
-    Player lastPlayer() {
+    Player getLastPlayer() {
         return lastPlayer;
     }
 
