@@ -22,7 +22,7 @@ class Round {
         return getWinner();
     }
 
-    private Player getWinner() {
+    Player getWinner() {
         if(roundReferee.isWinningMove(moveManager.getLastMove(), moveManager.getLastPlayer().getSign())){
             return moveManager.getLastPlayer();
         }else {
