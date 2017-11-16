@@ -1,5 +1,6 @@
 import java.util.ArrayList;
 import java.util.Collections;
+import java.util.Formatter;
 import java.util.List;
 
 class Board {
@@ -31,11 +32,20 @@ class Board {
     }
 
     void printBoard() {
-        StringBuilder board = new StringBuilder();
+        Formatter board = new Formatter();
         for (int i = 0; i < gameBoard.size(); i++) {
-            board.append(gameBoard.get(i).getSingOrNumber(i)).append("\t");
+            if((i + 1) % xSize == 0){
+                board.format("%5s", gameBoard.get(i).getSingOrNumber(i));
+            } else {
+                board.format("%5s   |", gameBoard.get(i).getSingOrNumber(i));
+            }
             if ((i + 1) % xSize == 0) {
-                board.append('\n');
+                board.format("\n");
+                for(int j=0;j<xSize-1;j++) {
+                    board.format("%8s|", "--------");
+                }
+                board.format("%8s", "--------");
+                board.format("\n");
             }
         }
         System.out.println(board);

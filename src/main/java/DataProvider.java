@@ -1,3 +1,4 @@
+import java.util.InputMismatchException;
 import java.util.Scanner;
 
 class DataProvider {
@@ -20,20 +21,32 @@ class DataProvider {
     private Player createPlayer(Sign sign) {
         System.out.println("Podaj imię gracza grającego " + sign.getSign());
         String name = scanner.nextLine();
+        if (name.length() < 3) {
+            System.out.println("Niepoprawne imie:(  proszę podać imię zawierające conajmniej 3 litery ");
+            createPlayer(sign);
+        }
         return new Player(name, sign);
     }
 
     void createBoardDimensions() {
-        System.out.println("Proszę podać wymiary planszy");
-        System.out.print("x: ");
-        int xSize = scanner.nextInt();
-        System.out.print("y: ");
-        int ySize = scanner.nextInt();
-        this.dimensions = new Dimensions(xSize, ySize);
-        if (!dimensions.areValid()) {
-            System.out.println("Minimlane wymiary planszy to 3x3. Spróbuj jeszcze raz:");
-            createBoardDimensions();
-        }
+
+        do {
+            try {
+                System.out.println("Proszę podać wymiary planszy");
+                System.out.print("x: ");
+                int xSize = scanner.nextInt();
+                System.out.print("y: ");
+                int ySize = scanner.nextInt();
+                this.dimensions = new Dimensions(xSize, ySize);
+                if (!dimensions.areValid()) {
+                    System.out.println("Minimlane wymiary planszy to 3x3. Spróbuj jeszcze raz:");
+                    createBoardDimensions();
+                }
+            } catch (InputMismatchException e) {
+                System.out.println("Zły znak. Proszę o jakąś wartość liczbową");
+            }
+            scanner.nextLine();
+        } while (dimensions == null);
 
     }
 
