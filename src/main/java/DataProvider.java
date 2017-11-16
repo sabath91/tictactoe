@@ -51,12 +51,23 @@ class DataProvider {
     }
 
     void setWiningSequenceLength() {
-        System.out.println("Podaj długość zwycięskiego ciągu");
-        winingSequenceLength = scanner.nextInt();
-        if ((winingSequenceLength > Math.min(dimensions.xSize, dimensions.ySize)) || (winingSequenceLength < 3)) {
-            System.out.println("Podaj liczbę z przedziału <3, mniejszyWymiarPlanszy>! Spróbuj jeszcze raz");
-            setWiningSequenceLength();
-        }
+
+
+        do{
+            System.out.println("Podaj długość zwycięskiego ciągu");
+            try {
+                winingSequenceLength = scanner.nextInt();
+                if ((winingSequenceLength > Math.min(dimensions.xSize, dimensions.ySize)) || (winingSequenceLength < 3)) {
+                    System.out.println("Podaj liczbę z przedziału <3, mniejszyWymiarPlanszy>! Spróbuj jeszcze raz");
+                    setWiningSequenceLength();
+                }
+            }catch (InputMismatchException e){
+                System.out.println("Zły znak. Proszę o jakąś wartość liczbową");
+                scanner.nextLine();
+            }
+        }while (winingSequenceLength <3);
+
+
 
     }
 
