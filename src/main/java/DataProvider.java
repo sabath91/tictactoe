@@ -1,7 +1,8 @@
 import java.util.InputMismatchException;
 import java.util.Scanner;
 
-class DataProvider {
+
+class DataProvider{
 
     private Scanner scanner;
     private Player player1;
