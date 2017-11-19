@@ -107,7 +107,7 @@ class Board {
     public ArrayList<Field> getLeftDiagonal(int lastMove) {
         int initRowNumber = (lastMove - 1) / xSize;
         int initColumnNumber = (lastMove - 1) % xSize;
-        int difference = Math.abs(Math.max(initColumnNumber, initRowNumber) - 0);
+        int difference = Math.abs(Math.min(initColumnNumber, initRowNumber) - 0);
         int rowNumber = initRowNumber + difference;
         int columnNumber = initColumnNumber - difference;
         int resultSize =xSize;

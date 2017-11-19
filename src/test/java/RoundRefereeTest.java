@@ -125,7 +125,7 @@ public class RoundRefereeTest {
         roundReferee = new RoundReferee(5, new Board(5, 17, testBoard));
 
         //when
-        boolean result = roundReferee.isWinningMove(65, Sign.X);
+        boolean result = roundReferee.isWinningMove(60, Sign.X);
 
         //then
         assertTrue(result);
@@ -144,6 +144,22 @@ public class RoundRefereeTest {
 
         //when
         boolean result = roundReferee.isWinningMove(4, Sign.X);
+
+        //then
+        assertTrue(result);
+    }
+
+    public void shouldWinWhenOnLeftDiagonalWithXTranslationBig() {
+        //given
+        testBoard = new ArrayList<>(Arrays.asList(
+                new Field(Sign.E), new Field(Sign.E), new Field(Sign.E), new Field(Sign.E), new Field(Sign.E), new Field(Sign.E), new Field(Sign.E), new Field(Sign.E), new Field(Sign.E), new Field(Sign.E), new Field(Sign.E), new Field(Sign.X),
+                new Field(Sign.E), new Field(Sign.E), new Field(Sign.E), new Field(Sign.E), new Field(Sign.E), new Field(Sign.E), new Field(Sign.E), new Field(Sign.E), new Field(Sign.E), new Field(Sign.E), new Field(Sign.X), new Field(Sign.E),
+                new Field(Sign.E), new Field(Sign.E), new Field(Sign.E), new Field(Sign.E), new Field(Sign.E), new Field(Sign.E), new Field(Sign.E), new Field(Sign.E), new Field(Sign.E), new Field(Sign.X), new Field(Sign.E), new Field(Sign.E)
+        ));
+        roundReferee = new RoundReferee(winningArea, new Board(12, 3, testBoard));
+
+        //when
+        boolean result = roundReferee.isWinningMove(12, Sign.X);
 
         //then
         assertTrue(result);
@@ -203,6 +219,38 @@ public class RoundRefereeTest {
     }
 
 
+    public void shouldWinWhenOnRightDiagonalWithYTranslationBig() {
+        //given
+        testBoard = new ArrayList<>(Arrays.asList(
+
+                new Field(Sign.E), new Field(Sign.E), new Field(Sign.E), new Field(Sign.E),
+                new Field(Sign.E), new Field(Sign.E), new Field(Sign.E), new Field(Sign.E),
+                new Field(Sign.E), new Field(Sign.E), new Field(Sign.E), new Field(Sign.E),
+                new Field(Sign.E), new Field(Sign.E), new Field(Sign.E), new Field(Sign.E),
+                new Field(Sign.E), new Field(Sign.E), new Field(Sign.E), new Field(Sign.E),
+                new Field(Sign.E), new Field(Sign.E), new Field(Sign.E), new Field(Sign.E),
+                new Field(Sign.E), new Field(Sign.E), new Field(Sign.E), new Field(Sign.E),
+                new Field(Sign.E), new Field(Sign.E), new Field(Sign.E), new Field(Sign.E),
+                new Field(Sign.E), new Field(Sign.E), new Field(Sign.E), new Field(Sign.E),
+                new Field(Sign.E), new Field(Sign.E), new Field(Sign.E), new Field(Sign.E),
+                new Field(Sign.E), new Field(Sign.E), new Field(Sign.E), new Field(Sign.E),
+                new Field(Sign.E), new Field(Sign.E), new Field(Sign.E), new Field(Sign.E),
+                new Field(Sign.E), new Field(Sign.E), new Field(Sign.E), new Field(Sign.E),
+                new Field(Sign.E), new Field(Sign.E), new Field(Sign.E), new Field(Sign.E),
+                new Field(Sign.X), new Field(Sign.E), new Field(Sign.E), new Field(Sign.E),
+                new Field(Sign.E), new Field(Sign.X), new Field(Sign.E), new Field(Sign.E),
+                new Field(Sign.E), new Field(Sign.E), new Field(Sign.X), new Field(Sign.E),
+                new Field(Sign.E), new Field(Sign.E), new Field(Sign.E), new Field(Sign.X)
+        ));
+        roundReferee = new RoundReferee(4, new Board(4, 18, testBoard));
+
+        //when
+        boolean result = roundReferee.isWinningMove(72, Sign.X);
+
+        //then
+        assertTrue(result);
+    }
+
     public void shouldWinWhenOnRightDiagonalWithXTranslation() {
         //given
         testBoard = new ArrayList<>(Arrays.asList(
@@ -218,6 +266,25 @@ public class RoundRefereeTest {
         //then
         assertTrue(result);
     }
+
+    public void shouldWinWhenOnRightDiagonalWithXTranslationBig() {
+        //given
+        testBoard = new ArrayList<>(Arrays.asList(
+               new Field(Sign.E),new Field(Sign.E),new Field(Sign.E),new Field(Sign.E),new Field(Sign.E),new Field(Sign.E),new Field(Sign.E), new Field(Sign.E), new Field(Sign.X), new Field(Sign.E), new Field(Sign.E),
+               new Field(Sign.E),new Field(Sign.E),new Field(Sign.E),new Field(Sign.E),new Field(Sign.E),new Field(Sign.E),new Field(Sign.E), new Field(Sign.E), new Field(Sign.E), new Field(Sign.X), new Field(Sign.E),
+               new Field(Sign.E),new Field(Sign.E),new Field(Sign.E),new Field(Sign.E),new Field(Sign.E),new Field(Sign.E),new Field(Sign.E), new Field(Sign.E), new Field(Sign.E), new Field(Sign.E), new Field(Sign.X)
+        ));
+        roundReferee = new RoundReferee(winningArea, new Board(11, 3, testBoard));
+
+        //when
+        boolean result = roundReferee.isWinningMove(21, Sign.X);
+
+        //then
+        assertTrue(result);
+    }
+
+
+
 
     public void shouldWinWhenOnRightDiagonalWithYTranslationAndXTranslation() {
         //given
