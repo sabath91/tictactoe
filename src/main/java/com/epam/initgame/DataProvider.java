@@ -1,8 +1,13 @@
+package com.epam.initgame;
+
+import com.epam.utils.Player;
+import com.epam.utils.Sign;
+
 import java.util.InputMismatchException;
 import java.util.Scanner;
 
 
-class DataProvider{
+public class DataProvider{
 
     private Scanner scanner;
     private Player player1;
@@ -10,11 +15,11 @@ class DataProvider{
     private Dimensions dimensions;
     private int winingSequenceLength;
 
-    DataProvider() {
+    public DataProvider() {
         this.scanner = new Scanner(System.in);
     }
 
-    void createPlayers() {
+    public void createPlayers() {
         player1 = createPlayer(Sign.X);
         player2 = createPlayer(Sign.O);
     }
@@ -29,7 +34,7 @@ class DataProvider{
         return new Player(name, sign);
     }
 
-    void createBoardDimensions() {
+    public void createBoardDimensions() {
 
         do {
             try {
@@ -51,14 +56,14 @@ class DataProvider{
 
     }
 
-    void setWiningSequenceLength() {
+    public void setWiningSequenceLength() {
 
 
         do{
             System.out.println("Podaj długość zwycięskiego ciągu");
             try {
                 winingSequenceLength = scanner.nextInt();
-                if ((winingSequenceLength > Math.min(dimensions.xSize, dimensions.ySize)) || (winingSequenceLength < 3)) {
+                if ((winingSequenceLength > Math.min(dimensions.getxSize(), dimensions.getySize())) || (winingSequenceLength < 3)) {
                     System.out.println("Podaj liczbę z przedziału <3, mniejszyWymiarPlanszy>! Spróbuj jeszcze raz");
                     setWiningSequenceLength();
                 }
@@ -72,15 +77,15 @@ class DataProvider{
 
     }
 
-    Dimensions getDimensions() {
+    public Dimensions getDimensions() {
         return dimensions;
     }
 
-    Player getPlayer1() {
+    public Player getPlayer1() {
         return player1;
     }
 
-    Player getPlayer2() {
+    public Player getPlayer2() {
         return player2;
     }
 

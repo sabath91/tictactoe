@@ -1,3 +1,8 @@
+package com.epam.game;
+
+import com.epam.game.round.Round;
+import com.epam.initgame.DataProvider;
+
 public class Game {
 
     DataProvider dataProvider;
@@ -10,7 +15,7 @@ public class Game {
 
 
 
-    void play() {
+    public void play() {
 
         System.out.println("Tic-Tac-Toe v1.0");
 

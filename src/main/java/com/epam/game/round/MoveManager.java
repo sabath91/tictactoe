@@ -1,3 +1,8 @@
+package com.epam.game.round;
+
+import com.epam.utils.Board;
+import com.epam.utils.Player;
+
 import java.util.Scanner;
 
 class MoveManager {

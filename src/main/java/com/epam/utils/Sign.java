@@ -1,3 +1,5 @@
+package com.epam.utils;
+
 public enum Sign {
     X("X"),O("O"),
 

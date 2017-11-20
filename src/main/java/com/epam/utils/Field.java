@@ -1,8 +1,10 @@
-class Field {
+package com.epam.utils;
+
+public class Field {
 
     private Sign sign;
 
-    Field(Sign sign) {
+    public Field(Sign sign) {
         this.sign = sign;
     }
 
@@ -18,7 +20,7 @@ class Field {
         this.sign = sign;
     }
 
-    String getSign(){
+    public String getSign(){
       return sign.getSign();
     }
 }

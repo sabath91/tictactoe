@@ -1,10 +1,12 @@
-class Player {
+package com.epam.utils;
+
+public class Player {
 
     private  final String name;
     private final Sign sign;
 
 
-    Player(String name, Sign sign) {
+    public Player(String name, Sign sign) {
         this.name = name;
         this.sign =sign;
     }

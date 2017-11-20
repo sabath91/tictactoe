@@ -1,9 +1,11 @@
+package com.epam.utils;
+
 import java.util.ArrayList;
 import java.util.Collections;
 import java.util.Formatter;
 import java.util.List;
 
-class Board {
+public class Board {
 
     private int xSize;
     private int ySize;
@@ -11,14 +13,14 @@ class Board {
     private int load;
 
 
-    Board(int xSize, int ySize, List<Field> gameBoard) {
+    public Board(int xSize, int ySize, List<Field> gameBoard) {
         this.xSize = xSize;
         this.ySize = ySize;
         this.gameBoard = gameBoard;
         load = 0;
     }
 
-    static Board initializeGameBoard(int xSize, int ySize) {
+    public static Board initializeGameBoard(int xSize, int ySize) {
         int boardSize = xSize * ySize;
         List<Field> gameBoard = new ArrayList<>(boardSize);
         for (int i = 0; i < boardSize; i++) {
@@ -31,7 +33,7 @@ class Board {
         return Collections.unmodifiableList(gameBoard);
     }
 
-    void printBoard() {
+    public void printBoard() {
         Formatter board = new Formatter();
         for (int i = 0; i < gameBoard.size(); i++) {
             if ((i + 1) % xSize == 0) {
@@ -55,7 +57,7 @@ class Board {
         return load < gameBoard.size();
     }
 
-    void mark(int move, Sign sign) {
+    public void mark(int move, Sign sign) {
         gameBoard.get(move - 1).set(sign);
         load++;
     }

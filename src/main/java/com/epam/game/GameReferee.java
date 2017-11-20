@@ -1,3 +1,7 @@
+package com.epam.game;
+
+import com.epam.utils.Player;
+
 class GameReferee {
 
     private Player player1;

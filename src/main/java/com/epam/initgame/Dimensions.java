@@ -1,6 +1,8 @@
-class Dimensions {
-    int xSize;
-    int ySize;
+package com.epam.initgame;
+
+public class Dimensions {
+    private final int xSize;
+    private final int ySize;
 
     Dimensions(int xSize, int ySize) {
         this.xSize = xSize;

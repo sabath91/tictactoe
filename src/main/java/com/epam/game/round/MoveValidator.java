@@ -1,3 +1,7 @@
+package com.epam.game.round;
+
+import com.epam.utils.Board;
+
 class MoveValidator {
 
     Board board;

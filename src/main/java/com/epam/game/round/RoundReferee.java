@@ -1,3 +1,9 @@
+package com.epam.game.round;
+
+import com.epam.utils.Board;
+import com.epam.utils.Field;
+import com.epam.utils.Sign;
+
 import java.util.ArrayList;
 
 class RoundReferee {
