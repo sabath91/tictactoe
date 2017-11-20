@@ -1,40 +1,50 @@
 package com.epam.initgame;
 
+import com.epam.initgame.Dimensions;
 import com.epam.utils.Player;
+import com.epam.utils.Settings;
 import com.epam.utils.Sign;
 
 import java.util.InputMismatchException;
 import java.util.Scanner;
 
 
-public class DataProvider{
+public class DataInitializer {
 
     private Scanner scanner;
-    private Player player1;
-    private Player player2;
-    private Dimensions dimensions;
-    private int winingSequenceLength;
+    private Settings settings;
 
-    public DataProvider() {
-        this.scanner = new Scanner(System.in);
+    public void setupGame() {
+        createPlayers();
+        createBoardDimensions();
+        setWiningSequenceLength();
     }
 
-    public void createPlayers() {
-        player1 = createPlayer(Sign.X);
-        player2 = createPlayer(Sign.O);
+    public Settings getSettings() {
+        return settings;
+    }
+
+    public DataInitializer() {
+        scanner = new Scanner(System.in);
+        settings = new Settings();
+    }
+
+    private void createPlayers() {
+        settings.setPlayer1(createPlayer(Sign.X));
+        settings.setPlayer2(createPlayer(Sign.O));
     }
 
     private Player createPlayer(Sign sign) {
         System.out.println("Podaj imię gracza grającego " + sign.getSign());
         String name = scanner.nextLine();
         if (name.length() < 3) {
-            System.out.println("Niepoprawne imie:(  proszę podać imię zawierające conajmniej 3 litery ");
+            System.out.println("Niepoprawne imie:(  proszę podać imię zawierające co najmniej 3 litery ");
             createPlayer(sign);
         }
         return new Player(name, sign);
     }
 
-    public void createBoardDimensions() {
+    private void createBoardDimensions() {
 
         do {
             try {
@@ -43,8 +53,8 @@ public class DataProvider{
                 int xSize = scanner.nextInt();
                 System.out.print("y: ");
                 int ySize = scanner.nextInt();
-                this.dimensions = new Dimensions(xSize, ySize);
-                if (!dimensions.areValid()) {
+                settings.setDimensions(new Dimensions(xSize, ySize));
+                if (!settings.getDimensions().areValid()) {
                     System.out.println("Minimlane wymiary planszy to 3x3. Spróbuj jeszcze raz:");
                     createBoardDimensions();
                 }
@@ -52,18 +62,18 @@ public class DataProvider{
                 System.out.println("Zły znak. Proszę o jakąś wartość liczbową");
             }
             scanner.nextLine();
-        } while (dimensions == null);
+        } while (settings.getDimensions() == null);
 
     }
 
-    public void setWiningSequenceLength() {
+    private void setWiningSequenceLength() {
 
 
         do{
             System.out.println("Podaj długość zwycięskiego ciągu");
             try {
-                winingSequenceLength = scanner.nextInt();
-                if ((winingSequenceLength > Math.min(dimensions.getxSize(), dimensions.getySize())) || (winingSequenceLength < 3)) {
+                settings.setWiningSequenceLength(scanner.nextInt());
+                if (settings.isWinningSequenceLengthValid()) {
                     System.out.println("Podaj liczbę z przedziału <3, mniejszyWymiarPlanszy>! Spróbuj jeszcze raz");
                     setWiningSequenceLength();
                 }
@@ -71,25 +81,8 @@ public class DataProvider{
                 System.out.println("Zły znak. Proszę o jakąś wartość liczbową");
                 scanner.nextLine();
             }
-        }while (winingSequenceLength <3);
-
-
+        }while (settings.isWinningSequenceLengthValid());
 
     }
 
-    public Dimensions getDimensions() {
-        return dimensions;
-    }
-
-    public Player getPlayer1() {
-        return player1;
-    }
-
-    public Player getPlayer2() {
-        return player2;
-    }
-
-    public int getWiningSequenceLength() {
-        return winingSequenceLength;
-    }
 }

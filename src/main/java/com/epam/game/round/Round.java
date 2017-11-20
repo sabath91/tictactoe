@@ -1,8 +1,8 @@
 package com.epam.game.round;
 
-import com.epam.initgame.DataProvider;
 import com.epam.utils.Board;
 import com.epam.utils.Player;
+import com.epam.utils.Settings;
 
 public class Round {
     private final Board board;
@@ -10,10 +10,10 @@ public class Round {
     private final RoundReferee roundReferee;
     private boolean isMovePossible = true;
     private boolean isBoardNotFull = true;
-    public Round(DataProvider dataProvider) {
-        board = Board.initializeGameBoard(dataProvider.getDimensions().getxSize() , dataProvider.getDimensions().getySize());
-        moveManager = new MoveManager(board, dataProvider.getPlayer1(), dataProvider.getPlayer2());
-        roundReferee = new RoundReferee(dataProvider.getWiningSequenceLength(), board);
+    public Round(Settings settings) {
+        board = new Board(settings.getDimensions());
+        moveManager = new MoveManager(board, settings.getPlayer1(), settings.getPlayer2());
+        roundReferee = new RoundReferee(settings.getWiningSequenceLength(), board);
     }
 
 

@@ -1,15 +1,16 @@
 package com.epam.game;
 
 import com.epam.game.round.Round;
-import com.epam.initgame.DataProvider;
+import com.epam.utils.Settings;
 
 public class Game {
 
-    DataProvider dataProvider;
-    private GameReferee gameReferee;
 
-    public Game() {
-        this.dataProvider = new DataProvider();
+    private GameReferee gameReferee;    //todo final
+    private final Settings settings;
+
+    public Game(Settings settings) {
+        this.settings = settings;
     }
 
 
@@ -17,15 +18,10 @@ public class Game {
 
     public void play() {
 
-        System.out.println("Tic-Tac-Toe v1.0");
 
-        dataProvider.createPlayers();
-        dataProvider.createBoardDimensions();
-        dataProvider.setWiningSequenceLength();
-
-        gameReferee = new GameReferee(dataProvider.getPlayer1(), dataProvider.getPlayer2());
+        gameReferee = new GameReferee(settings.getPlayer1(), settings.getPlayer2());
         for (int i=0; i<3; i++) {
-            Round round = new Round(dataProvider);
+            Round round = new Round(settings);
             if (round.play() != null) {
                 System.out.println("Rundę wygrywa: "+ round.getWinner().getName());
                 gameReferee.givePointTo(round.getWinner());
