@@ -5,7 +5,6 @@ public class Game {
 
     public Game() {
         this.dataProvider = new DataProvider();
-//        this.dataProvider = new MockedDataProvider();
     }
 
 

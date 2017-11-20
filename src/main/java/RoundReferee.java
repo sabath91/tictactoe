@@ -2,7 +2,6 @@ import java.util.ArrayList;
 
 class RoundReferee {
 
-    //TODO or Setting winingArea = Settings.getWinningArea;
     int winningArea;
     Sign sign;
     private Board board;

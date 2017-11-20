@@ -29,9 +29,9 @@ class GameReferee {
 
     String getWinner() {
         if(player1Score>player2Score){
-            return player1.getName() + " won the game";
+            return player1.getName() + " wygrał grę";
         }else if(player2Score>player1Score){
-            return player2.getName() + " won the game";
+            return player2.getName() + " wygrał grę";
         }else {
             return "Gra zakończona remisem";
         }
