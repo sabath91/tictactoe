@@ -1,9 +1,6 @@
 package com.epam.initgame;
 
-import com.epam.initgame.Dimensions;
-import com.epam.utils.Player;
-import com.epam.utils.Settings;
-import com.epam.utils.Sign;
+import com.epam.utils.*;
 
 import java.util.InputMismatchException;
 import java.util.Scanner;
@@ -11,8 +8,12 @@ import java.util.Scanner;
 
 public class DataInitializer {
 
+    private static final int MIN_BOARD_DIMENSION = 3;
     private Scanner scanner;
     private Settings settings;
+    private Printer printer;
+    private InputCollector inputCollector;
+    private Validator validator;
 
     public void setupGame() {
         createPlayers();
@@ -27,6 +28,9 @@ public class DataInitializer {
     public DataInitializer() {
         scanner = new Scanner(System.in);
         settings = new Settings();
+        printer = new Printer();
+        inputCollector = new InputCollector();
+        validator = new Validator();
     }
 
     private void createPlayers() {
@@ -44,32 +48,36 @@ public class DataInitializer {
         return new Player(name, sign);
     }
 
-    private void createBoardDimensions() {
+    //should be private but how to test it? -- without reflection
+    void createBoardDimensions() {
+        printer.giveMessage("Proszę podać wymiary planszy");
+        int xSize = getDimension("x: ");
 
+        int ySize = getDimension("y: ");
+
+        settings.setDimensions(new Dimensions(xSize, ySize));
+    }
+
+    private int getDimension(String message) {
+        int dim;
+        boolean retry;
         do {
-            try {
-                System.out.println("Proszę podać wymiary planszy");
-                System.out.print("x: ");
-                int xSize = scanner.nextInt();
-                System.out.print("y: ");
-                int ySize = scanner.nextInt();
-                settings.setDimensions(new Dimensions(xSize, ySize));
-                if (!settings.getDimensions().areValid()) {
-                    System.out.println("Minimlane wymiary planszy to 3x3. Spróbuj jeszcze raz:");
-                    createBoardDimensions();
-                }
-            } catch (InputMismatchException e) {
-                System.out.println("Zły znak. Proszę o jakąś wartość liczbową");
-                scanner.nextLine();
+            dim = inputCollector.askToProvideInt(message);
+            if (validator.lessThen(dim, MIN_BOARD_DIMENSION)) {
+                retry = true;
+                printer.giveMessage("Minimlane wymiary planszy to 3x3. Spróbuj jeszcze raz");
+            } else {
+                retry = false;
             }
-        } while (settings.getDimensions() == null);
-
+        }
+        while (retry);
+        return dim;
     }
 
     private void setWiningSequenceLength() {
 
 
-        do{
+        do {
             System.out.println("Podaj długość zwycięskiego ciągu");
             try {
                 settings.setWiningSequenceLength(scanner.nextInt());
@@ -77,11 +85,11 @@ public class DataInitializer {
                     System.out.println("Podaj liczbę z przedziału <3, mniejszyWymiarPlanszy>! Spróbuj jeszcze raz");
                     setWiningSequenceLength();
                 }
-            }catch (InputMismatchException e){
+            } catch (InputMismatchException e) {
                 System.out.println("Zły znak. Proszę o jakąś wartość liczbową");
                 scanner.nextLine();
             }
-        }while (settings.isWinningSequenceLengthValid());
+        } while (settings.isWinningSequenceLengthValid());
 
     }
 

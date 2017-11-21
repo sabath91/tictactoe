@@ -4,7 +4,7 @@ public class Dimensions {
     private final int xSize;
     private final int ySize;
 
-    Dimensions(int xSize, int ySize) {
+    public Dimensions(int xSize, int ySize) {
         this.xSize = xSize;
         this.ySize = ySize;
     }

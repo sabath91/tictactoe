@@ -31,6 +31,12 @@ public class Board {
         this.gameBoard = testBoard;
     }
 
+    //just for testing
+    public int getSize(){
+        return gameBoard.size();
+    }
+
+
     public void printBoard() {
         Formatter board = new Formatter();
         for (int i = 0; i < gameBoard.size(); i++) {
