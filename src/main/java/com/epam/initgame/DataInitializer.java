@@ -60,8 +60,8 @@ public class DataInitializer {
                 }
             } catch (InputMismatchException e) {
                 System.out.println("Zły znak. Proszę o jakąś wartość liczbową");
+                scanner.nextLine();
             }
-            scanner.nextLine();
         } while (settings.getDimensions() == null);
 
     }

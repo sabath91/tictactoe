@@ -3,7 +3,6 @@ package com.epam.utils;
 import com.epam.initgame.Dimensions;
 
 import java.util.ArrayList;
-import java.util.Collections;
 import java.util.Formatter;
 import java.util.List;
 

@@ -3,6 +3,7 @@ package com.epam.game.round;
 import com.epam.utils.Board;
 import com.epam.utils.Player;
 
+import java.util.InputMismatchException;
 import java.util.Scanner;
 
 class MoveManager {
@@ -30,17 +31,25 @@ class MoveManager {
 
         Scanner scanner = new Scanner(System.in);
         System.out.println(currentPlayer.getName().toUpperCase() + " - Gdzie chcesz postawić znak?:\n");
-        int move = scanner.nextInt();
+        try {
+            int move = scanner.nextInt();
 
-        if (moveValidator.validate(move)) {
-            board.mark(move, currentPlayer.getSign());
-            lastMove = move;
-            changePlayer();
-        } else {
-            //retry
-            System.out.println(currentPlayer.getName().toUpperCase() + " - NIEWŁAŚCIWY RUCH\n Spróbuj jeszcze raz! Gdzie chcesz postawić znak?:\n");
+            if (moveValidator.validate(move)) {
+                board.mark(move, currentPlayer.getSign());
+                lastMove = move;
+                changePlayer();
+            } else {
+                //retry
+                System.out.println(currentPlayer.getName().toUpperCase() + " - NIEWŁAŚCIWY RUCH\n Spróbuj jeszcze raz! Gdzie chcesz postawić znak?:\n");
+                handleMove();
+            }
+        }catch (InputMismatchException e) {
+            System.out.println("Zły znak. Proszę o jakąś wartość liczbową");
+            scanner.nextLine();
             handleMove();
         }
+
+
     }
 
     private void changePlayer() {
