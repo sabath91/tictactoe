@@ -311,7 +311,7 @@ public class RoundRefereeTest {
     }
 
 
-    public void shouldNotWinWhenOnlyEmptySignsInRow() {
+    public void shouldNotWinWhenOnlyEmptySignsInTable() {
         //given
         testBoard = new ArrayList<>(Arrays.asList(
                 new Field(Sign.E), new Field(Sign.E), new Field(Sign.E),
@@ -327,12 +327,12 @@ public class RoundRefereeTest {
         assertFalse(result);
     }
 
-    public void shouldNotWinWhenInterruptedByOtherSign() {
+    public void shouldNotWinOnDiagonalWhenInterruptedByOtherSign() {
         //given
         testBoard = new ArrayList<>(Arrays.asList(
-                new Field(Sign.X), new Field(Sign.X), new Field(Sign.E),
+                new Field(Sign.X), new Field(Sign.E), new Field(Sign.E),
                 new Field(Sign.E), new Field(Sign.O), new Field(Sign.E),
-                new Field(Sign.E), new Field(Sign.E), new Field(Sign.E)
+                new Field(Sign.E), new Field(Sign.E), new Field(Sign.X)
         ));
         roundReferee = new RoundReferee(winningArea, new Board(xSize, ySize, testBoard));
 
@@ -343,13 +343,30 @@ public class RoundRefereeTest {
         assertFalse(result);
     }
 
-    public void nextTest() {
+    public void shouldNotWinOnRowWhenSequenceBrokenByOtherSign() {
         //given
         testBoard = new ArrayList<>(Arrays.asList(
-                new Field(Sign.E), new Field(Sign.X), new Field(Sign.E), new Field(Sign.E),
-                new Field(Sign.E), new Field(Sign.E), new Field(Sign.O), new Field(Sign.E),
+                new Field(Sign.X), new Field(Sign.X), new Field(Sign.O), new Field(Sign.X),
+                new Field(Sign.E), new Field(Sign.E), new Field(Sign.E), new Field(Sign.E),
                 new Field(Sign.E), new Field(Sign.E), new Field(Sign.E), new Field(Sign.E),
                 new Field(Sign.E), new Field(Sign.E), new Field(Sign.E), new Field(Sign.E)
+        ));
+        roundReferee = new RoundReferee(winningArea, new Board(4, 4, testBoard));
+
+        //when
+        boolean result = roundReferee.isWinningMove(7, Sign.O);
+
+        //then
+        assertFalse(result);
+    }
+
+    public void shouldNotWinOnColumnWhenSequenceBrokenByOtherSign() {
+        //given
+        testBoard = new ArrayList<>(Arrays.asList(
+                new Field(Sign.X), new Field(Sign.E), new Field(Sign.E), new Field(Sign.E),
+                new Field(Sign.X), new Field(Sign.E), new Field(Sign.E), new Field(Sign.E),
+                new Field(Sign.O), new Field(Sign.E), new Field(Sign.E), new Field(Sign.E),
+                new Field(Sign.X), new Field(Sign.E), new Field(Sign.E), new Field(Sign.E)
         ));
         roundReferee = new RoundReferee(winningArea, new Board(4, 4, testBoard));
 

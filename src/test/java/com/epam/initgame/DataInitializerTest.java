@@ -1,6 +1,5 @@
 package com.epam.initgame;
 
-import com.epam.utils.Settings;
 import org.testng.annotations.DataProvider;
 import org.testng.annotations.Test;
 
@@ -8,7 +7,7 @@ import java.io.ByteArrayInputStream;
 import java.io.ByteArrayOutputStream;
 import java.io.PrintStream;
 
-import static org.testng.Assert.*;
+import static org.testng.Assert.assertEquals;
 
 @Test
 public class DataInitializerTest {
