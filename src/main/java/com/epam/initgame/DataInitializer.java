@@ -51,14 +51,15 @@ public class DataInitializer {
     //should be private but how to test it? -- without reflection
     void createBoardDimensions() {
         printer.giveMessage("Proszę podać wymiary planszy");
-        int xSize = getDimension("x: ");
+        int xSize = askUserForBoardDimension("x: ");
 
-        int ySize = getDimension("y: ");
+        int ySize = askUserForBoardDimension("y: ");
 
         settings.setDimensions(new Dimensions(xSize, ySize));
     }
 
-    private int getDimension(String message) {
+
+    private int askUserForBoardDimension(String message) {
         int dim;
         boolean retry;
         do {
@@ -74,23 +75,28 @@ public class DataInitializer {
         return dim;
     }
 
-    private void setWiningSequenceLength() {
-
-
-        do {
-            System.out.println("Podaj długość zwycięskiego ciągu");
-            try {
-                settings.setWiningSequenceLength(scanner.nextInt());
-                if (settings.isWinningSequenceLengthValid()) {
-                    System.out.println("Podaj liczbę z przedziału <3, mniejszyWymiarPlanszy>! Spróbuj jeszcze raz");
-                    setWiningSequenceLength();
-                }
-            } catch (InputMismatchException e) {
-                System.out.println("Zły znak. Proszę o jakąś wartość liczbową");
-                scanner.nextLine();
-            }
-        } while (settings.isWinningSequenceLengthValid());
-
+    void setWiningSequenceLength(){
+        settings.setWiningSequenceLength(askUserForWinningSequenceLength("Podaj długość zwycięskiego ciągu"));
     }
+
+    private int askUserForWinningSequenceLength(String message){
+        int length ;
+        boolean retry;
+        do {
+            length = inputCollector.askToProvideInt(message);
+            if(validator.lessThen(length,MIN_BOARD_DIMENSION) || validator.moreThen(length, smallerBoardDimension())){
+                retry = true;
+                printer.giveMessage("Podaj liczbę z przedziału <3, mniejszyWymiarPlanszy>! Spróbuj jeszcze raz");
+            }else {
+                retry = false;
+            }
+        }while (retry);
+        return length;
+    }
+
+    private int smallerBoardDimension(){
+        return Math.min(settings.getDimensions().getxSize(), settings.getDimensions().getySize());
+    }
+
 
 }

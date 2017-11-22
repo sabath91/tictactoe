@@ -6,11 +6,11 @@
 | Player wins, if he has unbroken line of his characters, in a row, in a column or diagonally | 22.11.2017 | 22.11.2017 | 22.11.2017
 | Game works with square or rectangular board | 22.11.2017 | 22.11.2017 | 23.11.2017 | 
 | Characters: O (naught) and X (cross)                     | 22.11.2017 | 23.11.2017 | 24.11.2017
-| Game is configurable: Board dimensions: 3x3, 4x4, 99x101, etc. (user provides) |  22.11.2017 | 23.11.2017 | 24.11.2017
-| Interactive: it should accept players instructions about each move | 23.11.2017 | 24.11.2017 | 25.11.2017  
-| It is "best of three", though I can quit mid-way through | 23.11.2017 | 24.11.2017 | 24.11.2017  
-| Game is configurable: Winning condition has variable number of characters: 3, 4, 5, etc. (user provides) | 23.11.2017 | 24.11.2017 | 25.11.2017
-| Players have names and scores                            | 23.11.2017  | 24.11.2017  | 24.11.2017 
+| Game is configurable: Board dimensions: 3x3, 4x4, 99x101, etc. (user provides) |  22.11.2017 | 23.11.2017 | 25.11.2017
+| Interactive: it should accept players instructions about each move | 23.11.2017 | 24.11.2017 | 27.11.2017  
+| It is "best of three", though I can quit mid-way through | 23.11.2017 | 24.11.2017 | 27.11.2017  
+| Game is configurable: Winning condition has variable number of characters: 3, 4, 5, etc. (user provides) | 23.11.2017 | 24.11.2017 | 27.11.2017
+| Players have names and scores                            | 23.11.2017  | 24.11.2017  | 27.11.2017 
 | Winner has better score. Draw is possible | 23.11.2017 | 24.11.2017 | 27.11.2017 
 | Interactive: it should ask who begins | 24.11.2017 | 26.11.2017 | 27.11.2017
 | Interactive: it informs about session result, who’s turn it is now and the like | 24.11.2017 | 25.11.2017 | 27.11.2017
